@@ -2,20 +2,20 @@ package car.conts;
 
 public class Command {
 
-	private boolean isTurn ;
+	private int turnStep ;
 	private int moveStep;
 	
-	public Command (boolean isTurn, int moveStep) {
-		this.isTurn = isTurn;
+	public Command (int turnStep, int moveStep) {
+		this.turnStep = turnStep;
 		this.moveStep = moveStep;
 	}
 
-	public boolean isTurn() {
-		return isTurn;
+	public int getTurnStep() {
+		return turnStep;
 	}
 
-	public void setTurn(boolean isTurn) {
-		this.isTurn = isTurn;
+	public void setTurnStep(int turnStep) {
+		this.turnStep = turnStep;
 	}
 
 	public int getMoveStep() {

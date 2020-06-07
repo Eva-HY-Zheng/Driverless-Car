@@ -14,11 +14,12 @@ public class CarActionImpl implements CarAction {
 		this.carPark = carPark;
 	}
 	
-	@Override
 	public Car move(Command command, Car car) throws OutOfBoundaryException{
 		
-		if (command.isTurn()) {
-			turnClockwise(car);
+		if (command.getTurnStep() > 0) {
+			for (int t=0; t<command.getTurnStep(); t++) {
+				turnClockwise(car);
+			}
 		}
 		
 		if (command.getMoveStep() > 0 ) {
@@ -51,6 +52,8 @@ public class CarActionImpl implements CarAction {
 			case WEST : x--; car.setPositionX(x); break;
 			case NORTH : y++; car.setPositionY(y); break;
 		}
+		
+		//Check boundaries
 		if (x < 1 || y < 1 || x > carPark.getX() || y > carPark.getY()) {
 			throw new OutOfBoundaryException(car,carPark);
 		}
